@@ -21,9 +21,9 @@ TEAMS_DB = pd.DataFrame({
 
 def run_advanced_poisson(team_A, team_B, sims=5000):
     """Simulates matches including 90 mins, extra time, and penalty thresholds."""
-    # .item() extracts the exact numeric value out of the Pandas series to prevent AttributeErrors
-    lambda_A = TEAMS_DB[TEAMS_DB['Team'] == team_A]['Strength'].values[0]
-    lambda_B = TEAMS_DB[TEAMS_DB['Team'] == team_B]['Strength'].values[0]
+    # Using float() completely converts the Pandas extraction into a raw decimal to prevent errors
+    lambda_A = float(TEAMS_DB[TEAMS_DB['Team'] == team_A]['Strength'].values[0])
+    lambda_B = float(TEAMS_DB[TEAMS_DB['Team'] == team_B]['Strength'].values[0])
     
     wins_A, wins_B = 0, 0
     for _ in range(sims):
