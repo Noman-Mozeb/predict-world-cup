@@ -21,6 +21,7 @@ TEAMS_DB = pd.DataFrame({
 
 def run_advanced_poisson(team_A, team_B, sims=5000):
     """Simulates matches including 90 mins, extra time, and penalty thresholds."""
+    # .item() extracts the exact numeric value out of the Pandas series to prevent AttributeErrors
     lambda_A = TEAMS_DB[TEAMS_DB['Team'] == team_A]['Strength'].values[0]
     lambda_B = TEAMS_DB[TEAMS_DB['Team'] == team_B]['Strength'].values[0]
     
@@ -28,16 +29,23 @@ def run_advanced_poisson(team_A, team_B, sims=5000):
     for _ in range(sims):
         gA = np.random.poisson(lambda_A)
         gB = np.random.poisson(lambda_B)
-        if gA > gB: wins_A += 1
-        elif gB > gA: wins_B += 1
+        if gA > gB: 
+            wins_A += 1
+        elif gB > gA: 
+            wins_B += 1
         else:
             # Extra Time (Fatigue modifier applied)
             exA = np.random.poisson(lambda_A * 0.33)
             exB = np.random.poisson(lambda_B * 0.33)
-            if (gA + exA) > (gB + exB): wins_A += 1
-            elif (gB + exB) > (gA + exA): wins_B += 1
+            if (gA + exA) > (gB + exB): 
+                wins_A += 1
+            elif (gB + exB) > (gA + exA): 
+                wins_B += 1
             else:
                 # Sudden death penalty flips
-                if np.random.rand() > 0.5: wins_A += 1
-                else: wins_B += 1
+                if np.random.rand() > 0.5: 
+                    wins_A += 1
+                else: 
+                    wins_B += 1
+                    
     return (wins_A / sims) * 100, (wins_B / sims) * 100
