@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import io
-import time
+import time 
 
 # --- 1. ENTERPRISE VIEWPORT CONFIGURATION ---
 st.set_page_config(page_title="Predict World Cup | Global Sports Network", layout="wide")
