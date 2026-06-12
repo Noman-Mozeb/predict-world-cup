@@ -113,7 +113,7 @@ st.sidebar.markdown("🔗 **[Google Domains Registry](https://domains.google)**"
 st.sidebar.markdown("🔗 **[GitHub Production Hosting](https://github.com)**")
 
 # --- 8. PERMANENT INTERACTIVE LAYOUT STRATEGY ---
-col_left, col_right = st.columns()
+col_left, col_right = st.columns([3, 1])
 
 with col_left:
     st.markdown("### 🏟️ AI Match Prediction Engine")
@@ -199,4 +199,3 @@ with col_left:
 
     elif selected_page == "3. App Downloads (Google Play & Apple Store)":
         st.write("Download our official apps to track live matches on mobile operating systems:")
-        st.button("🤖 Get App on Google Play Store Marketplace Link Placeholder", use_container_width=True)
