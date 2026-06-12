@@ -65,7 +65,6 @@ st.markdown(
 )
 
 # --- 7. MASTER SIDEBAR DIRECTORY CONFIGURATION ---
-# Clean, exact names for the directory selector
 DEPARTMENTS = [
     "7. Dashboard",
     "10. Match Center",
@@ -114,10 +113,9 @@ st.sidebar.markdown("🔗 **[Google Domains Registry](https://domains.google)**"
 st.sidebar.markdown("🔗 **[GitHub Production Hosting](https://github.com)**")
 
 # --- 8. PERMANENT INTERACTIVE LAYOUT STRATEGY ---
-col_left, col_right = st.columns([2, 1])
+col_left, col_right = st.columns()
 
 with col_left:
-    # CORE REQUIREMENT: The prediction match tools are anchored at the top of the application layout
     st.markdown("### 🏟️ AI Match Prediction Engine")
     
     all_teams = sorted(TEAMS_DB['Team'].tolist())
@@ -133,7 +131,6 @@ with col_left:
         if team_1 == team_2:
             st.error("Error: Teams must be distinct selections.")
         else:
-            # Clear float calculations using local index positions
             l1 = float(TEAMS_DB[TEAMS_DB['Team'] == team_1]['Strength'].iloc[0])
             l2 = float(TEAMS_DB[TEAMS_DB['Team'] == team_2]['Strength'].iloc[0])
             
@@ -157,7 +154,6 @@ with col_left:
             else:
                 st.warning("⚠️ Variance recorded against AI computational matrix.")
 
-    # REQUIREMENT 2: Integrated Excel Data Download Module
     st.markdown("#### 📥 Export Data Hub")
     xlsx_buffer = io.BytesIO()
     with pd.ExcelWriter(xlsx_buffer, engine='openpyxl') as writer:
@@ -171,7 +167,6 @@ with col_left:
     )
 
     st.markdown("---")
-    # --- DYNAMIC STRUCTURAL DEPARTMENT VIEWS ---
     st.markdown(f"## 📁 Section: {selected_page}")
 
     if selected_page == "7. Dashboard":
@@ -198,3 +193,7 @@ with col_left:
         st.markdown("- 👟 *Elite Performance Vault Cleats*\n- 👕 *Official Stadium Training Kit Jerseys*")
 
     elif selected_page == "3. Products: Nutritional Supplements":
+        st.write("Clinically verified nutritional supplements engineered for professional athletes:")
+        st.markdown("- 🥤 *Pure Whey Protein Isolate Matrix*\n- ⚡ *High-Electrolyte Performance Blends*")
+
+    elif selected_page == "3. App Downloads (Google Play & Apple Store)":
