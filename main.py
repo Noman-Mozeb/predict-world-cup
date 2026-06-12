@@ -142,7 +142,7 @@ with col_left:
             p1 = (w1 / 1000) * 100
             p2 = (w2 / 1000) * 100
             
-            st.markdown("#### 📊 Simulation Complete (1,000 Analytics Scenarios Executed)")
+            st.markdown("#### 📊 Simulation Complete")
             res1, res2 = st.columns(2)
             res1.metric(f"{team_1} Win Probability", f"{p1:.1f}%")
             res2.metric(f"{team_2} Win Probability", f"{p2:.1f}%")
@@ -150,9 +150,9 @@ with col_left:
             ai_verdict = team_1 if p1 > p2 else team_2
             if user_choice == ai_verdict:
                 st.balloons()
-                st.success("🎉 Correct Match! Points added to user profile.")
+                st.success("🎉 Correct Match! Points added.")
             else:
-                st.warning("⚠️ Variance recorded against AI computational matrix.")
+                st.warning("⚠️ Variance recorded.")
 
     st.markdown("#### 📥 Export Data Hub")
     xlsx_buffer = io.BytesIO()
@@ -179,14 +179,15 @@ with col_left:
 
     elif selected_page == "3. Sports News":
         st.write("### 📢 Top Headlines")
-        st.markdown("- **Breaking:** Real-time data adjustments track strong training metrics for Group E.\n- **Analysis:** High-density analytics favor wing-back field coverage arrays.")
+        st.markdown("- **Breaking:** Real-time data updates track performance metrics.\n- **Analysis:** High-density analytics favor wide wingbacks.")
 
     elif selected_page == "26. Website Blog":
-        st.write("Insights, thought pieces, and technical documentation regarding the deployment of sports analytics models.")
+        st.write("Insights, thought pieces, and technical documentation regarding models.")
 
     elif selected_page == "3. Services: Website Building & Ad Design":
         st.write("Our technology stack offers professional services to global sports brands:")
-        st.info("💻 **Website Building:** Fast, fully responsive sports portals.\n\n🎨 **Ad Design:** Optimized banners to maximize Google AdSense click-through rates.")
+        st.markdown("*   **Website Building:** Fast, fully responsive sports portals.")
+        st.markdown("*   **Ad Design:** Optimized banners to maximize Google AdSense click-through rates.")
 
     elif selected_page == "3. Products: Sportswear, Shoes & Equipment":
         st.write("Browse professional sportswear, performance shoes, and official match equipment.")
@@ -197,3 +198,5 @@ with col_left:
         st.markdown("- 🥤 *Pure Whey Protein Isolate Matrix*\n- ⚡ *High-Electrolyte Performance Blends*")
 
     elif selected_page == "3. App Downloads (Google Play & Apple Store)":
+        st.write("Download our official apps to track live matches on mobile operating systems:")
+        st.button("🤖 Get App on Google Play Store Marketplace Link Placeholder", use_container_width=True)
